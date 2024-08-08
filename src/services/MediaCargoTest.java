@@ -36,7 +36,7 @@ class MediaCargoTest {
 	        mapaEsperado.put(DepartamentoEnum.SUPORTE, BigDecimal.ZERO);
 	        mapaEsperado.put(DepartamentoEnum.QUALIDADE, BigDecimal.ZERO);
 	        mapaEsperado.put(DepartamentoEnum.VENDAS, BigDecimal.ZERO);
-
+	        
 	        assertEquals(mapaEsperado, mapaAtual);
 	    }
 	}

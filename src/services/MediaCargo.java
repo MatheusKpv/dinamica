@@ -1,8 +1,7 @@
 package services;
 
 import java.math.BigDecimal;
-
-import java.math.MathContext;
+import java.math.RoundingMode;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,9 +25,7 @@ public class MediaCargo {
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
             // CALCULA Á MÉDIA, SE TIVER FUNCIONAÁRIO NO DEPARTAMENTO
             BigDecimal media = numeroFuncionarios > 0 ? somaSalarios
-                .divide(BigDecimal.valueOf(numeroFuncionarios),
-                //GARANTE PRECISÃO NA HORA DE DIVIDIR	
-                MathContext.DECIMAL64)
+                .divide(BigDecimal.valueOf(numeroFuncionarios),2, RoundingMode.HALF_EVEN)
                 : BigDecimal.ZERO;
       
             mapa.put(departamento, media);

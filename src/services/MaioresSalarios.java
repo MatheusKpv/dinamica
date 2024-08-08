@@ -11,9 +11,6 @@ public class MaioresSalarios {
 
 	// 1 - Pegar os lista de 10 funcionarios com maior salário
 
-	public static void main(String[] args) {
-	}
-
 	public static List<Funcionario> filtraPorSalario(List<Funcionario> funcionarios) {
 
 		List<Funcionario> funcionariosFiltrados = new ArrayList<Funcionario>();
@@ -23,5 +20,4 @@ public class MaioresSalarios {
 				.limit(10)
 				.collect(Collectors.toCollection(ArrayList::new));
 	}
-
 }

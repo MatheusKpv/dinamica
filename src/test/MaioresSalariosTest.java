@@ -1,4 +1,4 @@
-package services;
+package test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -10,11 +10,13 @@ import org.junit.jupiter.api.Test;
 
 import model.DepartamentoEnum;
 import model.Funcionario;
+import services.CargaDados;
+import services.MaioresSalarios;
 
 class MaioresSalariosTest {
 
 	@Test
-	void test() {
+	void mostra10FuncionariosComMaiorSalario() {
 		
 		List<Funcionario> funcionarios = new ArrayList<>();
 
@@ -29,10 +31,10 @@ class MaioresSalariosTest {
         funcionarios.add(new Funcionario("Joana Silva", DepartamentoEnum.ADMINISTRACAO, new BigDecimal("10650")));
         funcionarios.add(new Funcionario("Érika Pereira Lima", DepartamentoEnum.ADMINISTRACAO, new BigDecimal("10650")));
         
-        MaioresSalarios m = new MaioresSalarios();
-        List<Funcionario> funcionariosFiltrado = m.filtraPorSalario(CargaDados.getListaFuncionarios());
-        System.out.println(funcionarios);
-        System.out.println(funcionariosFiltrado);
+		MaioresSalarios m = new MaioresSalarios();
+		List<Funcionario> funcionariosFiltrado = m.filtraPorSalario(CargaDados.getListaFuncionarios());
+		System.out.println(funcionarios);
+		System.out.println(funcionariosFiltrado);
 		assertEquals(funcionarios.toString(), funcionariosFiltrado.toString());
         
 	}

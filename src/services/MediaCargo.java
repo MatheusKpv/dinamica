@@ -1,33 +1,40 @@
 package services;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
+import java.math.MathContext;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
-import javax.swing.JOptionPane;
-
-import aula6.outros.Evento;
-import aula6.outros.TipoDeEvento;
 import model.DepartamentoEnum;
 import model.Funcionario;
 
 public class MediaCargo {
-	//chave: cargo, valor: media
-	public Map<DepartamentoEnum, List<Funcionario>> filtrarMediaPorCargo(DepartamentoEnum cargo) {
-		
-		List<Funcionario> funcionarios = new CargaDados().getListaFuncionarios();
-		List<Funcionario> listaFuncionario = funcionarios.stream()
-				.filter(e -> e.getCargo().equals(cargo))
-				.collect(Collectors.toList());
-		
-		Double media = funcionarios.stream().filter(e -> e.getCargo().equals(cargo)).;
-//		Map<DepartamentoEnum, List<Funcionario>> mapa = new HashMap<>();
-//		mapa.put(cargo, listaFuncionario);
-//		return mapa;
-	} 
-	
+
+    public Map<DepartamentoEnum, BigDecimal> getMediaSalarioPorCargo(List<Funcionario> funcionarios) {
+        Map<DepartamentoEnum, BigDecimal> mapa = new HashMap<>();
+        
+        for (DepartamentoEnum departamento : DepartamentoEnum.values()) {
+            int numeroFuncionarios = (int) funcionarios.stream()
+                .filter(f -> f.getCargo().equals(departamento))
+                .count();
+            // CALCULA A SOMA DOS SÁLARIOS POR DEPARTAMENTO
+            BigDecimal somaSalarios = funcionarios.stream()
+                .filter(f -> f.getCargo().equals(departamento))
+                .map(f -> f.getSalario())
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+            
+            // CALCULA Á MÉDIA, SE TIVER FUNCIONAÁRIO NO DEPARTAMENTO
+            BigDecimal media = numeroFuncionarios > 0 ? somaSalarios
+                .divide(BigDecimal.valueOf(numeroFuncionarios),
+                //GARANTE PRECISÃO NA HORA DE DIVIDIR	
+                MathContext.DECIMAL64)
+                : BigDecimal.ZERO;
+      
+            mapa.put(departamento, media);
+        }
+        
+        return mapa;
+    }
 }
+

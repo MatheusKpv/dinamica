@@ -1,6 +1,7 @@
 package services;
 
 import java.math.BigDecimal;
+
 import java.math.MathContext;
 import java.util.HashMap;
 import java.util.List;
@@ -23,7 +24,6 @@ public class MediaCargo {
                 .filter(f -> f.getCargo().equals(departamento))
                 .map(f -> f.getSalario())
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
-            
             // CALCULA Á MÉDIA, SE TIVER FUNCIONAÁRIO NO DEPARTAMENTO
             BigDecimal media = numeroFuncionarios > 0 ? somaSalarios
                 .divide(BigDecimal.valueOf(numeroFuncionarios),

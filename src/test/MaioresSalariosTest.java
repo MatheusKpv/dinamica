@@ -1,4 +1,4 @@
-package services;
+package test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -10,6 +10,8 @@ import org.junit.jupiter.api.Test;
 
 import model.DepartamentoEnum;
 import model.Funcionario;
+import services.CargaDados;
+import services.MaioresSalarios;
 
 class MaioresSalariosTest {
 

@@ -7,4 +7,5 @@ public enum DepartamentoEnum {
 	SUPORTE,
 	QUALIDADE,
 	VENDAS;
+
 }

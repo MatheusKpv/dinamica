@@ -40,13 +40,13 @@ public class Funcionario {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Funcionario [nome=");
+		builder.append("\n");
 		builder.append(nome);
-		builder.append(", cargo=");
+		builder.append(", cargo: ");
 		builder.append(cargo);
-		builder.append(", salario=");
+		builder.append(", salario: ");
 		builder.append(salario);
-		builder.append("]");
+		builder.append("\n");
 		return builder.toString();
 	}
 

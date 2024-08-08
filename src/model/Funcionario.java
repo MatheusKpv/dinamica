@@ -6,7 +6,7 @@ public class Funcionario {
 	private String nome;
 	private DepartamentoEnum cargo;
 	private BigDecimal salario;
-	
+
 	public Funcionario(String nome, DepartamentoEnum cargo, BigDecimal salario) {
 		this.nome = nome;
 		this.cargo = cargo;
@@ -36,5 +36,18 @@ public class Funcionario {
 	public void setSalario(BigDecimal salario) {
 		this.salario = salario;
 	}
-	
+  
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Funcionario [nome=");
+		builder.append(nome);
+		builder.append(", cargo=");
+		builder.append(cargo);
+		builder.append(", salario=");
+		builder.append(salario);
+		builder.append("]");
+		return builder.toString();
+	}
+
 }
